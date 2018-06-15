@@ -7,7 +7,9 @@ Object.defineProperty(exports, "__esModule", {
 exports.newRequest = newRequest;
 exports.resolveUrl = resolveUrl;
 
-var _resolveUrl = require("resolve-url");
+//var _resolveUrl = require("resolve-url");
+
+var _resolveUrl = require("resolve-pathname");
 
 var _resolveUrl2 = _interopRequireDefault(_resolveUrl);
 
