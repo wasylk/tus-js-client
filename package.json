@@ -56,10 +56,13 @@
     "buffer-from": "^0.1.1",
     "extend": "^3.0.0",
     "lodash.throttle": "^4.1.1",
-    "resolve-url": "^0.2.1"
+    "resolve-url": "^0.2.1",
+    "utf8": "^3.0.0",
+    "base-64": "^0.1.0"
   },
   "scripts": {
-    "build": "browserify lib/index.js -t [ babelify ] -s tus -d | exorcist ./dist/tus.js.map | derequire > dist/tus.js",
+
+    "build": "browserify lib.es5/index.js -t [ babelify ] -s tus -d | exorcist ./dist/tus.js.map | derequire > dist/tus.js",
     "watch": "watchify lib/index.js -t babelify -o dist/tus.js -s tus -v -d",
     "test": "./bin/test",
     "phantom-test": "phantomjs --local-to-remote-url-access=yes bin/phantom-jasmine.js",

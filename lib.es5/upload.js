@@ -26,6 +26,10 @@ var _extend2 = _interopRequireDefault(_extend);
 
 var _request = require("./node/request");
 
+var base64 = require('base-64');
+
+var utf8 = require('utf8');
+
 var _source = require("./node/source");
 
 var _base = require("./node/base64");
@@ -570,17 +574,17 @@ var Upload = function () {
 }();
 
 function encodeMetadata(metadata) {
-  if (!Base64.isSupported) {
-    return "";
-  }
 
   var encoded = [];
 
   for (var key in metadata) {
-    encoded.push(key + " " + Base64.encode(metadata[key]));
+    var bytes = utf8.encode(metadata[key]);
+    var base64string = base64.encode(bytes);
+    encoded.push(key + " " + base64string);
   }
 
   return encoded.join(",");
+
 }
 
 /**
