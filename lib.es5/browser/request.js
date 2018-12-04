@@ -9,9 +9,10 @@ exports.resolveUrl = resolveUrl;
 
 //var _resolveUrl = require("resolve-url");
 
-var _resolveUrl = require("resolve-pathname");
+// var _resolveUrl = require("resolve-pathname");
+var _urlParse = require("url-parse");
 
-var _resolveUrl2 = _interopRequireDefault(_resolveUrl);
+var _urlParse2 = _interopRequireDefault(_urlParse);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21,5 +22,8 @@ function newRequest() {
 
 
 function resolveUrl(origin, link) {
-  return (0, _resolveUrl2.default)(origin, link);
+
+  // return (0, _resolveUrl2.default)(origin, link);
+  return new _urlParse2.default(link, origin).toString();
 }
+

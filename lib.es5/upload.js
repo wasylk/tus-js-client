@@ -352,9 +352,9 @@ var Upload = function () {
           return;
         }
 
-//        _this2.url = (0, _request.resolveUrl)(_this2.options.endpoint, location);
+       _this2.url = (0, _request.resolveUrl)(_this2.options.endpoint, location);
 
-        _this2.url = 'http:' + location;
+        // _this2.url = 'http:' + location;
 
         if (_this2._size === 0) {
           // Nothing to upload and file was successfully created

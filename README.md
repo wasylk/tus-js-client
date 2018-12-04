@@ -189,9 +189,11 @@ be an Error instance.
 `withCredentials` in all XMLHttpRequests to use Cookies in requests. The
 remote server must accept CORS and credentials.
 * `chunkSize = Infinity`: a number indicating the maximum size of a chunk
-uploaded in a single request.  Note that if the server has hard limits (such as
-the minimum 5MB chunk size imposed by S3), specifying a chunk size which falls
-outside those hard limits will cause chunked uploads to fail
+in bytes which will be uploaded in a single request. This can be used when
+a server or proxy has a limit on how big request bodies may be.
+Note that if the server has hard limits (such as the minimum 5MB chunk
+size imposed by S3), specifying a chunk size which falls
+outside those hard limits will cause chunked uploads to fail.
 * `metadata = {}`: an object with string values used as additional meta data
 which will be passed along to the server when (and only when) creating a new
 upload. Can be used for filenames, file types etc.
@@ -317,6 +319,20 @@ required, you can open `SpecRunner.html` using the `file:///` protocol.
 Tests can also be run on SauceLabs' cloud infrastructure using `npm test`.
 Before using this command, you have to set up your SauceLabs account by filling
 the `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY` variables else the command will fail.
+
+## FAQ
+
+### How can I access the upload's ID?
+
+tus-js-client identifies and accesses uploads by their URL and *not* their ID.
+Therefore, there is no direct functionality for getting the upload ID. However,
+with most tus server you are able to extract the upload ID from the the upload
+URL. The upload URL can be accessed using the
+[`Upload#url` property](https://github.com/tus/tus-js-client#tusuploadurl) after
+an upload has been started. For example, the [tusd](https://github.com/tus/tusd)
+server and [tus-node-server](https://github.com/tus/tus-node-server) have URLs
+such as https://master.tus.io/files/accbccf63e9afedef9fbc1e6082835dc where the
+last segment is the upload URL.
 
 ## License
 
