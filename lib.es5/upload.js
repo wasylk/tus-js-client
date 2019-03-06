@@ -175,7 +175,7 @@ var Upload = function () {
               // - this error was caused by a request or it's response and
               // - the error is not a error status is 409
               // - the browser does not indicate that we are offline
-              var shouldRetry = _this._retryAttempt < retryDelays.length && err.originalRequest != null && err.originalRequest.status === 409 && && isOnline;
+              var shouldRetry = _this._retryAttempt < retryDelays.length && err.originalRequest != null && err.originalRequest.status === 409 && isOnline;
 
               if (!shouldRetry) {
                 _this._emitError(err);
